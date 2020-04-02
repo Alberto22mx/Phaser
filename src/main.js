@@ -1,3 +1,4 @@
+import Bootloader from './scenes/Bootloader.js';
 //Esta es la configuración que tendra tu juego los atributos son muy explicitos.
 const config = {
     //Con figuración opcional
@@ -17,8 +18,8 @@ const config = {
         text: '#fff00f',
         background: ['#ff0000'] //Pedemos pasar varios colores
     },
-
-    scene: {} //Aqui se crean los mundos de phaser por escenas
+    //Aqui se crean los mundos de phaser por escenas
+    scene: [Bootloader]
 };
 
 //Por ultimos instanciamos Phaser para crear el primer proyecto
