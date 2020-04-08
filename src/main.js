@@ -1,4 +1,7 @@
 import Bootloader from './scenes/Bootloader.js';
+import SceneA from './scenes/SceneA.js';
+import SceneB from './scenes/SceneB.js';
+
 //Esta es la configuración que tendra tu juego los atributos son muy explicitos.
 const config = {
     //Con figuración opcional
@@ -12,6 +15,16 @@ const config = {
     parent: 'contenedor', //En esta opción se tiene que colocar el id del div de en donde se va a renderizar el juego
     pixelArt: true, //Solo se usa si esta desarrollado para pixelart
     backgroundColor: '#34495e', //Cambia el color de fondo del juego
+    physics: { // Las physics dan gravedad a los objetos
+        default: 'arcade',
+        'arcade': {
+            'gravity': {
+                y: 1000
+            },
+            debug: true
+        }
+    },
+    zoom: 1.5,//Aserca el lienzo
     //Esto edita la información mostrada del proyecto en consola.
     banner: {
         hidePhaser: true,
@@ -19,7 +32,7 @@ const config = {
         background: ['#ff0000'] //Pedemos pasar varios colores
     },
     //Aqui se crean los mundos de phaser por escenas
-    scene: [Bootloader]
+    scene: [Bootloader, SceneA, SceneB]
 };
 
 //Por ultimos instanciamos Phaser para crear el primer proyecto
