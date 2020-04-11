@@ -10,24 +10,33 @@ class Bootloader extends Phaser.Scene {
     }
     preload() {
         this.load.path = './src/assets/';//Sirve para crear la ruta de las imagenes
-        this.load.audioSprite('fx', 'sonidos/spriteAudioGamma.json', ['sonidos/spriteAudioGamma.ogg']);
     }
     create() {
-        this.cubix = this.add.image(100, 100, 'cubix');
-        //const audio = this.sound.add('fx');
-        const cursor = this.input.keyboard.createCursorKeys();
-        cursor.up.on('down', () => {
-            this.sound.playAudioSprite('fx', 'clap');
-        });
-        cursor.down.on('down', () => {
-            this.sound.playAudioSprite('fx', 'percusion');
-        });
-        cursor.left.on('down', () => {
-            this.sound.playAudioSprite('fx', 'pop');
-        });
-        cursor.right.on('down', () => {
-            audio.play();
-        });
+        // Primero se tiene que registrar el evento y luego emitirlo, para solucionar este problema podemos registrar en preload
+        this.registry.events.on('evento', (dato)=>{
+            console.log('Se ha emitido el evento', dato);
+        }); // Se crea un escucha y se le pone como nombre 'evento' el nombre puede ser caulquiera
+        this.registry.events.emit('evento', 'Dato'); // Ejecuta el evento y puede pasar un dato
+
+
+
+
+
+
+
+
+        // this.data.set('vidas', 3); // Setea valores de una propiedad
+        // this.data.set('monedas', 3);
+        // this.data.setValue('vidas', 5); // Setea valores de una propiedad
+
+        // this.data.list.vidas += 1; // Suma vidas o resta vidas
+        // this.data.remove('monedas'); // remueve una propiedad
+        // console.log(this.data.list.vidas); // Obtenermos el valor de vidas
+        // console.log(this.data.get('vidas')); // Obtenermos el valor de vidas solo que se usa get
+        // console.log(this.data.getAll()); //Trae un objeto con todos los valores
+        // console.log(this.data.query('mon')); // Realiza una busqueda que conincida con las palabras que se le indiquen
+        // this.data.reset(); // Borra todo
+        // console.log(this.data.query('mon')); 
     }
     update(time, delta) {
     }
